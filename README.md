@@ -2,7 +2,7 @@
 
 ![Alt text](images/claude-code-cheat-sheet.png)
 
-> **Seu guia completo para dominar o Claude Code — do básico ao avançado em minutos!**
+> **Seu guia completo para dominar o Claude Code - do básico ao avançado em minutos!**
 
 Depois de testar o Claude Code extensivamente, desenvolvi este guia abrangente que vai te levar do básico ao avançado sem perder tempo. Seja você completamente novo no Claude Code ou querendo dominar recursos avançados, este guia tem tudo que você precisa.
 
