@@ -1,4 +1,4 @@
-# Guia Completo do Claude Code (Beta)
+# Guia Completo do Claude Code
 
 ![Alt text](images/claude-code-cheat-sheet.png)
 
@@ -24,27 +24,27 @@ claude --version
 
 ## 📚 Índice
 
-- 🟢 **Nível 1: Comandos Básicos**
-- 🟡 **Nível 2: Comandos Intermediários**
-- 🟠 **Nível 3: Comandos Avançados**
-- 🔴 **Nível 4: Comandos Expert**
-- 🔵 **Nível 5: Usuário Avançado**
-- 🟣 **Nível 6: Comandos Master**
-- 🟤 **Nível 7: Automação de Fluxo de Trabalho**
-- ⚫ **Nível 8: Integrações e Ecossistema**
-- ⚪ **Nível 9: Performance e Otimização**
-- 🔘 **Nível 10: Empresa e Produção**
-- 🧠 **Arquivo CLAUDE.md — Memória Persistente**
-- 🪝 **Hooks do Claude Code**
-- 🌍 **Variáveis de Ambiente**
-- 🤖 **Orquestração Multi-Agente**
-- 🚀 **Integração com GitHub Actions**
-- 🤝 **Contribuindo**
-- 📄 **Licença**
+- 🟢 **[Nível 1: Comandos Básicos](#-nível-1-comandos-básicos)**
+- 🟡 **[Nível 2: Comandos Intermediários](#-nível-2-comandos-intermediários)**
+- 🟠 **[Nível 3: Comandos Avançados](#-nível-3-comandos-avançados)**
+- 🔴 **[Nível 4: Comandos Expert](#-nível-4-comandos-expert)**
+- 🔵 **[Nível 5: Usuário Avançado](#-nível-5-usuário-avançado)**
+- 🟣 **[Nível 6: Comandos Master](#-nível-6-comandos-master)**
+- 🟤 **[Nível 7: Automação de Fluxo de Trabalho](#-nível-7-automação-de-fluxo-de-trabalho)**
+- ⚫ **[Nível 8: Integração e Ecossistema](#-nível-8-integração-e-ecossistema)**
+- ⚪ **[Nível 9: Performance e Otimização](#-nível-9-performance-e-otimização)**
+- 🔘 **[Nível 10: Empresa e Produção](#-nível-10-empresa-e-produção)**
+- 🧠 **[Arquivo CLAUDE.md - Memória Persistente](#-arquivo-claudemd--memória-persistente)**
+- 🪝 **[Hooks do Claude Code](#-hooks-do-claude-code)**
+- 🌍 **[Variáveis de Ambiente](#-variáveis-de-ambiente)**
+- 🤖 **[Orquestração Multi-Agente](#-orquestração-multi-agente)**
+- 🚀 **[Integração com GitHub Actions](#-integração-com-github-actions)**
+- 🤝 **[Contribuindo](#-contribuindo)**
+- 📄 **[Licença](#-licença)**
 
 ### Páginas
 
-- 🤖 **[Subagentes](subagents.md)** — Agentes de IA especializados para tarefas de desenvolvimento
+- 🤖 **[Subagentes](subagents.md)** - Agentes de IA especializados para tarefas de desenvolvimento
 
 ---
 
@@ -84,7 +84,7 @@ claude update
 ### Operações Básicas com Arquivos
 
 ```bash
-# Modo print (SDK) — executar e sair
+# Modo print (SDK) - executar e sair
 claude -p "explique esta função"
 
 # Processar conteúdo via pipe
@@ -191,7 +191,7 @@ claude -p --permission-prompt-tool mcp_auth_tool "consulta"
 claude --dangerously-skip-permissions
 ```
 
-### Comandos Slash — Gerenciamento de Sessão
+### Comandos Slash - Gerenciamento de Sessão
 
 ```bash
 /compact [instruções]     # Resumir conversa com instruções opcionais
@@ -201,7 +201,7 @@ claude --dangerously-skip-permissions
 /config                   # Abrir painel de configuração
 ```
 
-### Comandos Slash — Sistema
+### Comandos Slash - Sistema
 
 ```bash
 /doctor                   # Verificar saúde da instalação
@@ -477,7 +477,7 @@ claude --disallowedTools "Bash(rm:*)" "Bash(sudo:*)" "Bash(chmod:*)" \
 
 ---
 
-## 🧠 Arquivo CLAUDE.md — Memória Persistente
+## 🧠 Arquivo CLAUDE.md - Memória Persistente
 
 O arquivo `CLAUDE.md` é o sistema de **memória persistente** do Claude Code. Ele é lido automaticamente no início de cada sessão, permitindo que você defina instruções, contexto e convenções permanentes para o projeto.
 
@@ -503,13 +503,13 @@ projeto/subpasta/CLAUDE.md   # Instruções de subdiretório
 - Use async/await, nunca callbacks
 - Nomes de variáveis em camelCase, arquivos em kebab-case
 - Sempre adicione tipos TypeScript explícitos
-- Testes com Jest — cobertura mínima de 80%
+- Testes com Jest - cobertura mínima de 80%
 
 ## Comandos Importantes
-- `npm run dev` — iniciar servidor de desenvolvimento
-- `npm run test` — executar testes
-- `npm run build` — build de produção
-- `npm run db:migrate` — executar migrações do banco
+- `npm run dev` - iniciar servidor de desenvolvimento
+- `npm run test` - executar testes
+- `npm run build` - build de produção
+- `npm run db:migrate` - executar migrações do banco
 
 ## Regras de Negócio
 - Nunca deletar registros diretamente; use soft delete (campo `deletedAt`)
