@@ -4,7 +4,7 @@
 
 > **Seu guia completo para dominar o Claude Code - do básico ao avançado em minutos!**
 
-Depois de testar o Claude Code extensivamente, desenvolvi este guia abrangente que vai te levar do básico ao avançado sem perder tempo. Seja você completamente novo no Claude Code ou querendo dominar recursos avançados, este guia tem tudo que você precisa.
+Depois de explorar o Claude Code, organizei este guia com o objetivo de ajudar a galera que está começando ou quer entender melhor a ferramenta. A ideia é servir como um apoio prático e direto ao ponto, facilitando o aprendizado e o uso no dia a dia.
 
 ## Início Rápido
 
