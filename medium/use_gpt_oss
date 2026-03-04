@@ -1,45 +1,40 @@
 """
-Claude Code to Ollama Proxy Server
-==================================
+Servidor Proxy Claude Code para Ollama
+=======================================
 
-This proxy server acts as a middleware between Claude Code and Ollama,
-translating API calls and responses between the two different formats.
+Este servidor proxy atua como um middleware entre o Claude Code e o Ollama,
+traduzindo chamadas de API e respostas entre os dois formatos diferentes.
 
-Author: Joe Njenga
-Purpose: Enable Claude Code to work with local Ollama models (specifically GPT-OSS)
-Article : https://medium.com/@joe.njenga/how-i-tricked-claude-code-to-use-gpt-oss-the-new-openai-model-it-worked-5b7ee0483c22
-License: MIT
+Funcionalidades Principais:
+- Traduz requisições da API do Claude para o formato Ollama
+- Converte respostas do Ollama de volta para o formato da API do Claude
+- Suporta requisições com e sem streaming
+- Gerencia bypass de autenticação para modelos locais
+- Fornece endpoints de verificação de saúde
 
-Key Features:
-- Translates Claude API requests to Ollama format
-- Converts Ollama responses back to Claude API format
-- Supports both streaming and non-streaming requests
-- Handles authentication bypass for local models
-- Provides health check endpoints
-
-Requirements:
+Requisitos:
 - Python 3.7+
 - Flask
 - Requests
-- Ollama running locally with GPT-OSS model
+- Ollama rodando localmente com o modelo GPT-OSS
 
-Usage:
-1. Start Ollama: `ollama serve`
-2. Pull model: `ollama pull gpt-oss:20b`
-3. Run proxy: `python claude_ollama_proxy.py`
-4. Configure Claude Code to use http://localhost:8000 as base URL
+Uso:
+1. Inicie o Ollama: `ollama serve`
+2. Baixe o modelo: `ollama pull gpt-oss:20b`
+3. Execute o proxy: `python claude_ollama_proxy.py`
+4. Configure o Claude Code para usar http://localhost:8000 como URL base
 
-Environment Variables:
-- ANTHROPIC_API_KEY="dummy-key" (required by Claude Code)
-- ANTHROPIC_BASE_URL="http://localhost:8000" (points to this proxy)
+Variáveis de Ambiente:
+- ANTHROPIC_API_KEY="dummy-key" (exigida pelo Claude Code)
+- ANTHROPIC_BASE_URL="http://localhost:8000" (aponta para este proxy)
 
 Endpoints:
-- POST /v1/messages - Main message endpoint (supports streaming)
-- GET /v1/models - List available models
-- GET /health - Health check
+- POST /v1/messages - Endpoint principal de mensagens (suporta streaming)
+- GET /v1/models - Lista os modelos disponíveis
+- GET /health - Verificação de saúde
 
-Note: This proxy makes Claude Code think it's talking to Claude while
-actually communicating with your local Ollama instance.
+Observação: Este proxy faz o Claude Code acreditar que está se comunicando com o Claude,
+enquanto na verdade está se comunicando com sua instância local do Ollama.
 """
 
 from flask import Flask, request, jsonify, Response
