@@ -34,7 +34,7 @@ claude --version
 - ⚫ **[Nível 8: Integração e Ecossistema](#-nível-8-integração-e-ecossistema)**
 - ⚪ **[Nível 9: Performance e Otimização](#-nível-9-performance-e-otimização)**
 - 🔘 **[Nível 10: Empresa e Produção](#-nível-10-empresa-e-produção)**
-- 🧠 **[Arquivo CLAUDE.md - Memória Persistente](#-arquivo-claudemd--memória-persistente)**
+- 🧠 **[Arquivo CLAUDE.md - Instruções Persistentes](#-arquivo-claudemd--instruções-persistentes)**
 - 🪝 **[Hooks do Claude Code](#-hooks-do-claude-code)**
 - 🌍 **[Variáveis de Ambiente](#-variáveis-de-ambiente)**
 - 🤖 **[Orquestração Multi-Agente](#-orquestração-multi-agente)**
@@ -477,9 +477,11 @@ claude --disallowedTools "Bash(rm:*)" "Bash(sudo:*)" "Bash(chmod:*)" \
 
 ---
 
-## 🧠 Arquivo CLAUDE.md - Memória Persistente
+## 🧠 Arquivo CLAUDE.md - Instruções Persistentes
 
-O arquivo `CLAUDE.md` é o sistema de **memória persistente** do Claude Code. Ele é lido automaticamente no início de cada sessão, permitindo que você defina instruções, contexto e convenções permanentes para o projeto.
+O arquivo `CLAUDE.md` é lido automaticamente pelo agente no **início de cada sessão**. Ele funciona como um arquivo de instruções — não como memória persistente entre sessões. Cada vez que o Claude Code inicia, ele lê o `CLAUDE.md` e carrega aquelas diretrizes como contexto inicial.
+
+> ⚠️ **Esclarecimento importante**: O `CLAUDE.md` **não persiste memória** entre sessões. Ele é um arquivo de instruções estático que o agente lê ao iniciar. Memória persistente de verdade envolve outros mecanismos, como memory files e compactação de conversa com instrução (`/compact`).
 
 ### Localização e Hierarquia
 
@@ -517,18 +519,34 @@ projeto/subpasta/CLAUDE.md   # Instruções de subdiretório
 - Todas as rotas de API devem ter autenticação exceto /health e /auth
 ```
 
-### Comandos para Gerenciar Memória
+### Comandos para Gerenciar Instruções
 
 ```bash
 # Abrir ou criar o CLAUDE.md do projeto
 claude "abra o CLAUDE.md e adicione as convenções de código do projeto"
 
-# Adicionar instrução à memória
+# Adicionar instrução
 claude "adicione ao CLAUDE.md: sempre usar pnpm ao invés de npm"
 
-# Ver memória atual
+# Ver conteúdo atual
 claude "mostre o conteúdo do CLAUDE.md"
 ```
+
+### 💡 Dica Avançada: Separando Regras com `.claude/rules/`
+
+Para projetos maiores, manter tudo no `CLAUDE.md` pode aumentar desnecessariamente o consumo de tokens. Uma abordagem mais eficiente é separar as regras em arquivos dentro de `.claude/rules/`, organizados por escopo de pasta:
+
+```
+projeto/
+├── CLAUDE.md                        # Instruções globais (leve e enxuto)
+└── .claude/
+    └── rules/
+        ├── frontend.md              # Regras específicas para /src/frontend
+        ├── backend.md               # Regras específicas para /src/backend
+        └── database.md              # Regras específicas para /src/database
+```
+
+Com essa estrutura, o agente carrega apenas as regras do contexto relevante — o `CLAUDE.md` fica enxuto, e o consumo de tokens cai significativamente.
 
 ### Boas Práticas para CLAUDE.md
 
@@ -536,6 +554,7 @@ claude "mostre o conteúdo do CLAUDE.md"
 - Liste comandos de build, teste e deploy do projeto
 - Documente padrões de arquitetura e decisões técnicas
 - Inclua regras de negócio críticas para evitar erros
+- Para projetos grandes, use `.claude/rules/` por escopo
 - Atualize sempre que convenções mudarem
 
 ---
